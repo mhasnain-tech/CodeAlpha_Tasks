@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+</head>
+
+<style>
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(./Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url(https://as2.ftcdn.net/v2/jpg/06/01/11/43/1000_F_601114325_3GbXWhDaBwEkEVja7TpySxwnuiYCdmf9.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(53, 50, 50);
+}
+.calculator{
+    width: 350px;
+    /* border: 1px solid white; */
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background: transparent;
+    border-radius: 15px;
+}
+input {
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    border:none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;;
+    color: white;
+    font-size: 25px;
+    padding: 15px ;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: right;
+    border-radius:12px ;
+}
+input::placeholder{
+    color: white;
+    font-size: 25px;
+}
+button{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 22px;
+  box-shadow:   rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: 10px 5px;
+  cursor: pointer;
+  font-family: Montserrat;
+}
+.equalbtn{
+    background-color: rgb(255, 166, 0);
+    font-family: Montserrat;
+}
+.operator{
+    color: greenyellow;
+    font-family: Montserrat;
+}
+</style>
+
+<body>
+    <div class="main">
+        <div class="calculator">
+            <div>
+                <input type="text" placeholder="0" id="input">
+            </div>
+            <div class="buttons">
+                <div>
+                <button  class="operator">AC</button>
+                <button  class="operator">DEL</button>
+                <button  class="operator">%</button>
+                <button  class="operator">/</button>
+                </div>
+                <div>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button class="operator">*</button>
+                </div>
+                <div>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button  class="operator">-</button>
+                </div>
+                <div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button  class="operator">+</button>
+                </div>
+                <div>
+                <button>00</button>
+                <button>0</button>
+                <button>.</button>
+                <button class="equalbtn">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let input = document.getElementById("input")
+        let buttons = document.querySelectorAll("button");
+        let result = " "
+        let buttonsArr = Array.from(buttons)
+        console.log(buttonsArr);
+
+        buttons.forEach((buttons) => {
+       buttons.addEventListener("click" , (e) => {
+       if(e.target.innerHTML == "="){
+         result = eval(result);
+         input.value = result;
+        if(input.value =="undefined"){
+            result = "Please Enter a Value";
+            input.value = result;
+            
+            
+        }
+         
+       }
+       else if(e.target.innerHTML == "AC"){
+        result = "";
+        input.value = result;
+       }
+       else if(e.target.innerHTML == "DEL"){
+        result = result.substring(0 , result.length -1)
+        input.value = result;
+       }
+       else{
+        result += e.target.innerHTML;
+        input.value = result;
+       }
+       })
+        })
+        
+        // console.log(input);
+        
+    </script>
+
+</body>
+
+</html>
