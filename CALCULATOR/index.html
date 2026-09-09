@@ -155,9 +155,43 @@ button{
        }
        })
         })
-        
-        // console.log(input);
-        
+
+      
+// 2. YOUR KEYBOARD LOGIC (Written exactly like your click logic)
+window.addEventListener("keydown", (e) => {
+    let key = e.key;
+
+    // Filter to only react to actual calculator keys
+    const isNumberOrOperator = /[0-9.+\-*/]/.test(key);
+    const isSpecialKey = ["Enter", "Backspace", "Escape"].includes(key);
+
+    if (isNumberOrOperator || isSpecialKey) {
+        e.preventDefault(); // Prevents default browser typing to protect your 'result' variable
+
+        // --- Written exactly like your conditional logic above ---
+        if (key == "Enter") {
+            result = eval(result);
+            input.value = result;
+            if (input.value == "undefined") {
+                result = "Please Enter a Value";
+                input.value = result;
+            }
+        }
+        else if (key == "Escape") {
+            result = "";
+            input.value = result;
+        }
+        else if (key == "Backspace") {
+            result = result.substring(0,result.length - 1)
+            input.value = result;
+        }
+        else {
+            result += key;
+            input.value = result;
+        }
+    }
+});
+
     </script>
 
 </body>
