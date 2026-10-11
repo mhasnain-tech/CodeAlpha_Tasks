@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: lato;
+    src: url(../Lato/Lato-Italic.ttf);
+}
+
+body{
+    font-family: lato;
+}
