@@ -123,65 +123,82 @@ import { useReducer } from "react";
 
 // export default App
 
-
-
 const App = () => {
- 
+  // const initialState = {
+  //   count : 0
+  // }
 
-const initialState = {
-  count : 0
-}  
+  // const reducerFn = (state,action) => {
+  // console.log(state,action);
 
-const reducerFn = (state,action) => {
-console.log(state,action);
+  //  switch (action.type) {
+  //   case "increment" :
+  //     return {...state,count : state.count += 1}
+  //     // break;
+  //   case "decrement" :
+  //    return {...state,count : state.count -= 1}
 
- switch (action.type) {
-  case "increment" :
-    return {...state,count : state.count += 1}
-    // break;
-  case "decrement" :
-   return {...state,count : state.count -= 1}
- 
-   case "reset" :
-     return {...state ,count: state.count = 0}
- }
-  
+  //    case "reset" :
+  //      return {...state ,count: state.count = 0}
+  //  }
 
-  return state
-}
+  //   return state
+  // }
 
-  const [state,dispatch] = useReducer(reducerFn , initialState);
-  console.log(state);
-// const reducerFn = (state,action) => {
-// console.log(state,action);
+  //   const [state,dispatch] = useReducer(reducerFn , initialState);
+  //   console.log(state);
+  // const reducerFn = (state,action) => {
+  // console.log(state,action);
 
-//   if(action.type == "decrement"){
-//    return  state = state - 1
-//   }
-//   if(action.type == "increment"){
-//     return state = state + 1
-//   }
-//    if(action.type == "reset"){
-//     return state = 0;
-//    }
+  //   if(action.type == "decrement"){
+  //    return  state = state - 1
+  //   }
+  //   if(action.type == "increment"){
+  //     return state = state + 1
+  //   }
+  //    if(action.type == "reset"){
+  //     return state = 0;
+  //    }
 
-//   return state
-// }
+  //   return state
+  // }
 
-//   const [state,dispatch] = useReducer(reducerFn , 0);
-//   console.log(state);
-  
+  //   const [state,dispatch] = useReducer(reducerFn , 0);
+  //   console.log(state);
+
+  const initialState = {
+    count: 0,
+  };
+
+  const reducerFn = (state, action) => {
+    switch (action.type) {
+      case "increment":
+        return { ...state, count: state.count + 1 };
+        case "decrement" :
+        return {...state , count : state.count - 1}
+        case "reset" :
+        return {...state , count : state.count = 0}
+    }
+
+    return state;
+  };
+
+  const [state, dispatch] = useReducer(reducerFn, initialState);
+
   return (
     <div>
       Count : {state.count}
-
       <div>
-        <button onClick={() => dispatch({type : "decrement"})}>Decrement</button>
-        <button onClick={() => dispatch({type : "increment"})}>Increment</button>
-        <button onClick={() => dispatch({type : "reset"})}>Reset</button>
+        <button onClick={() => dispatch({ type: "decrement" })}>
+          Decrement
+        </button>
+        <button onClick={() => dispatch({ type: "increment" })}>
+          Increment
+        </button>
+        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
